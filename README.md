@@ -1,5 +1,4 @@
-# CineNexa 
-
+# CineNexa  
 A Streamlit app to search movies by title, genre, director, or keyword, displaying posters, ratings, and summaries.
 
 ## Features
@@ -10,63 +9,76 @@ A Streamlit app to search movies by title, genre, director, or keyword, displayi
 - Responsive design with 3 movies shown per row.
 
 ## Installation
-
 1. Clone the repo:
-   
-2. Create and activate a Python environment (optional but recommended):
+ git clone https://github.com/your-username/cinenexa.git](https://github.com/AzhaguMurugan08/Movie_recommendation_
 
-3. pip install -r requirements.txt
 
-4. 
+3. Install the required dependencies:
+
+
 ## Usage
-
 Run the Streamlit app with:
 
-streamlit run app.py
+
 
 
 This will open the app in your default web browser.
 
 ## API Key
+You need a TMDB API key for movie posters. Replace the `TMDB_API_KEY` variable in `app.py` with your own key from [TMDB](https://www.themoviedb.org/documentation/api).
 
-- You need a TMDB API key for movie posters. Replace the `TMDB_API_KEY` variable in `app.py` with your own key from [TMDB](https://www.themoviedb.org/documentation/api).
+## Dataset and Data Processing Instructions
 
-## License
+### Extract Movie Data from TMDB API
+- Sign up and get your TMDB API Key from [TMDB API](https://www.themoviedb.org/documentation/api).
+- Use Python requests or `tmdbv3api` package to fetch movie metadata such as title, genres, overview, keywords, crew, and ratings.
+- Sample code to fetch movie data:
 
-This project is licensed under the MIT License.
+import requests
 
-## Acknowledgments
+API_KEY = "your_api_key"
+movie_id = 550
 
-- Movie data and images powered by TMDB API.
+url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={API_KEY}"
+response = requests.get(url)
+data = response.json()
+print(data['title'], data['genres'], data['overview'])
+
+
+### Prepare DataFrame
+- Collect fetched movie data into dictionaries or lists.
+- Convert data into a Pandas DataFrame:
+
+import pandas as pd
+
+movies_data = [
+{"title": "Inception", "genres": ["Action", "Sci-Fi"], "overview": ".
+
+..", "crew": "Christopher Nolan", "vote_average": 8.8},
+# Add more movies here
+]
+
+df = pd.DataFrame(movies_data)
 
 
 
-Dataset and Data Processing Instructions
-1. Extract Movie Data from TMDB API
-Sign up and get your TMDB API Key from https://www.themoviedb.org/documentation/api
 
-Use Python requests or tmdbv3api package to fetch movie metadata such as title, genres, overview, keywords, crew, ratings.
+### Save Data as Pickle Files
+- Save the DataFrame as a pickle file for efficient loading in the app:
 
-. Prepare DataFrame
-Collect the fetched movie data into lists or dictionaries.
-
-Convert to a Pandas DataFrame:
-
-. Prepare DataFrame
-Collect the fetched movie data into lists or dictionaries.
-
-Convert to a Pandas DataFrame:
-Save Data as Pickle Files
-Save the DataFrame as a pickle file for faster loading in the app:
 
 df.to_pickle('movie_full_dict.pkl')
 
-If you have a similarity matrix (for recommendations), save it similarly:
 
- Load Data in App
- 
-In your Streamlit app, load the pickle files
 
+import pickle
+similarity_matrix = ... # your similarity matrix
+with open('similarity.pkl', 'wb') as f:
+pickle.dump(similarity_matrix, f)
+
+
+### Load Data in App
+- Load pickle files in your Streamlit app:
 
 import pickle
 
@@ -75,5 +87,10 @@ similarity = pickle.load(open('similarity.pkl', 'rb'))
 
 
 
+## License
+This project is licensed under the MIT License.
+
+## Acknowledgments
+- Movie data and images powered by TMDB API.
 
 
