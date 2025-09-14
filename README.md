@@ -47,7 +47,6 @@ Sign up and get your TMDB API Key from https://www.themoviedb.org/documentation/
 
 Use Python requests or tmdbv3api package to fetch movie metadata such as title, genres, overview, keywords, crew, ratings.
 
-
 . Prepare DataFrame
 Collect the fetched movie data into lists or dictionaries.
 
@@ -65,7 +64,8 @@ df.to_pickle('movie_full_dict.pkl')
 If you have a similarity matrix (for recommendations), save it similarly:
 
  Load Data in App
-In your Streamlit app, load the pickle files:
+ 
+In your Streamlit app, load the pickle files
 
 
 import pickle
