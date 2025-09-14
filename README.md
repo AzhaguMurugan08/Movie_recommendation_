@@ -12,3 +12,32 @@ A Streamlit app to search movies by title, genre, director, or keyword, displayi
 ## Installation
 
 1. Clone the repo:
+   
+2. Create and activate a Python environment (optional but recommended):
+
+3. pip install -r requirements.txt
+
+4. 
+## Usage
+
+Run the Streamlit app with:
+
+streamlit run app.py
+
+
+This will open the app in your default web browser.
+
+## API Key
+
+- You need a TMDB API key for movie posters. Replace the `TMDB_API_KEY` variable in `app.py` with your own key from [TMDB](https://www.themoviedb.org/documentation/api).
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+- Movie data and images powered by TMDB API.
+
+
+
