@@ -41,3 +41,39 @@ This project is licensed under the MIT License.
 
 
 
+Dataset and Data Processing Instructions
+1. Extract Movie Data from TMDB API
+Sign up and get your TMDB API Key from https://www.themoviedb.org/documentation/api
+
+Use Python requests or tmdbv3api package to fetch movie metadata such as title, genres, overview, keywords, crew, ratings.
+
+
+. Prepare DataFrame
+Collect the fetched movie data into lists or dictionaries.
+
+Convert to a Pandas DataFrame:
+
+. Prepare DataFrame
+Collect the fetched movie data into lists or dictionaries.
+
+Convert to a Pandas DataFrame:
+Save Data as Pickle Files
+Save the DataFrame as a pickle file for faster loading in the app:
+
+df.to_pickle('movie_full_dict.pkl')
+
+If you have a similarity matrix (for recommendations), save it similarly:
+
+ Load Data in App
+In your Streamlit app, load the pickle files:
+
+
+import pickle
+
+movie_dict = pickle.load(open('movie_full_dict.pkl', 'rb'))
+similarity = pickle.load(open('similarity.pkl', 'rb'))
+
+
+
+
+
