@@ -1,4 +1,4 @@
-# CineNexa - Movie Search App
+# CineNexa 
 
 A Streamlit app to search movies by title, genre, director, or keyword, displaying posters, ratings, and summaries.
 
